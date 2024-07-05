@@ -1,4 +1,4 @@
-package br.com.alurafood.pagamentos.model;
+package br.com.alurafood.payments.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,12 +13,12 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "pagamentos")
+@Table(name = "payments")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pagamento {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +52,7 @@ public class Pagamento {
     private Long pedidoId;
 
     @NotNull
-    private Long formaDePagamentoId;
+    private Long formaDePaymentId;
 
 
 }
