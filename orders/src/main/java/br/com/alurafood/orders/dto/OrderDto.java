@@ -1,6 +1,6 @@
-package br.com.alurafood.pedidos.dto;
+package br.com.alurafood.orders.dto;
 
-import br.com.alurafood.pedidos.model.Status;
+import br.com.alurafood.orders.model.Status;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -11,12 +11,12 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PedidoDto {
+public class OrderDto {
 
     private Long id;
     private LocalDateTime dataHora;
     private Status status;
-    private List<ItemDoPedidoDto> itens = new ArrayList<>();
+    private List<ItemDoOrderDto> itens = new ArrayList<>();
 
 
 

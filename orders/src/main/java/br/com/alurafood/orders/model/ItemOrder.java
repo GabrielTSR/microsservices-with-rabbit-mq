@@ -1,4 +1,4 @@
-package br.com.alurafood.pedidos.model;
+package br.com.alurafood.orders.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,12 +10,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Entity
-@Table(name = "item_do_pedido")
+@Table(name = "item_do_order")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemDoPedido {
+public class ItemDoOrder {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +27,6 @@ public class ItemDoPedido {
     private String descricao;
 
     @ManyToOne(optional=false)
-    private Pedido pedido;
+    private Order order;
 
 }

@@ -1,7 +1,7 @@
 package br.com.alurafood.payments.service;
 
 import br.com.alurafood.payments.dto.PaymentDto;
-import br.com.alurafood.payments.http.PedidoClient;
+import br.com.alurafood.payments.http.OrderClient;
 import br.com.alurafood.payments.model.Payment;
 import br.com.alurafood.payments.model.Status;
 import br.com.alurafood.payments.repository.PaymentRepositoy;
@@ -24,7 +24,7 @@ public class PaymentService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private PedidoClient pedido;
+    private OrderClient order;
 
 
     public Page<PaymentDto> obterTodos(Pageable paginacao) {
@@ -68,7 +68,7 @@ public class PaymentService {
 
         payment.get().setStatus(Status.CONFIRMADO);
         repository.save(payment.get());
-        pedido.atualizaPayment(payment.get().getPedidoId());
+        order.atualizaPayment(payment.get().getOrderId());
     }
 
 

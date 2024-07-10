@@ -11,8 +11,8 @@
 	<groupId>br.com.alurafood</groupId>
 	<artifactId>orders</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pedidos</name>
-	<description>MS de Pedidos do Alura Food</description>
+	<name>orders</name>
+	<description>MS de Orders do Alura Food</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

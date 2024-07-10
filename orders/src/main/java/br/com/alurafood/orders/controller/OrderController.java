@@ -1,8 +1,8 @@
-package br.com.alurafood.pedidos.controller;
+package br.com.alurafood.orders.controller;
 
-import br.com.alurafood.pedidos.dto.PedidoDto;
-import br.com.alurafood.pedidos.dto.StatusDto;
-import br.com.alurafood.pedidos.service.PedidoService;
+import br.com.alurafood.orders.dto.OrderDto;
+import br.com.alurafood.orders.dto.StatusDto;
+import br.com.alurafood.orders.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +15,20 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedidos")
-public class PedidoController {
+@RequestMapping("/orders")
+public class OrderController {
 
         @Autowired
-        private PedidoService service;
+        private OrderService service;
 
         @GetMapping()
-        public List<PedidoDto> listarTodos() {
+        public List<OrderDto> listarTodos() {
             return service.obterTodos();
         }
 
         @GetMapping("/{id}")
-        public ResponseEntity<PedidoDto> listarPorId(@PathVariable @NotNull Long id) {
-            PedidoDto dto = service.obterPorId(id);
+        public ResponseEntity<OrderDto> listarPorId(@PathVariable @NotNull Long id) {
+            OrderDto dto = service.obterPorId(id);
 
             return  ResponseEntity.ok(dto);
         }
@@ -39,18 +39,18 @@ public class PedidoController {
         }
 
         @PostMapping()
-        public ResponseEntity<PedidoDto> realizaPedido(@RequestBody @Valid PedidoDto dto, UriComponentsBuilder uriBuilder) {
-            PedidoDto pedidoRealizado = service.criarPedido(dto);
+        public ResponseEntity<OrderDto> realizaOrder(@RequestBody @Valid OrderDto dto, UriComponentsBuilder uriBuilder) {
+            OrderDto orderRealizado = service.criarOrder(dto);
 
-            URI endereco = uriBuilder.path("/pedidos/{id}").buildAndExpand(pedidoRealizado.getId()).toUri();
+            URI endereco = uriBuilder.path("/orders/{id}").buildAndExpand(orderRealizado.getId()).toUri();
 
-            return ResponseEntity.created(endereco).body(pedidoRealizado);
+            return ResponseEntity.created(endereco).body(orderRealizado);
 
         }
 
         @PutMapping("/{id}/status")
-        public ResponseEntity<PedidoDto> atualizaStatus(@PathVariable Long id, @RequestBody StatusDto status){
-           PedidoDto dto = service.atualizaStatus(id, status);
+        public ResponseEntity<OrderDto> atualizaStatus(@PathVariable Long id, @RequestBody StatusDto status){
+           OrderDto dto = service.atualizaStatus(id, status);
 
             return ResponseEntity.ok(dto);
         }
@@ -58,7 +58,7 @@ public class PedidoController {
 
         @PutMapping("/{id}/pago")
         public ResponseEntity<Void> aprovaPagamento(@PathVariable @NotNull Long id) {
-            service.aprovaPagamentoPedido(id);
+            service.aprovaPagamentoOrder(id);
 
             return ResponseEntity.ok().build();
 

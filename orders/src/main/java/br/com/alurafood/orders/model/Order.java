@@ -1,4 +1,4 @@
-package br.com.alurafood.pedidos.model;
+package br.com.alurafood.orders.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "pedidos")
+@Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido {
+public class Order {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +28,6 @@ public class Pedido {
     @NotNull @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToMany(cascade=CascadeType.PERSIST, mappedBy="pedido")
-    private List<ItemDoPedido> itens = new ArrayList<>();
+    @OneToMany(cascade=CascadeType.PERSIST, mappedBy="order")
+    private List<ItemDoOrder> itens = new ArrayList<>();
 }

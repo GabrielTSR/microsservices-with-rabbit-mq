@@ -1,4 +1,4 @@
-package br.com.alurafood.pedidos.dto;
+package br.com.alurafood.orders.dto;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemDoPedidoDto {
+public class ItemDoOrderDto {
 
     private Long id;
     private Integer quantidade;
